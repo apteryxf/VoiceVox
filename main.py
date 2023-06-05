@@ -1,3 +1,4 @@
+import speech_recognition as sr
 import openai
 import pyttsx3
 import subprocess
@@ -5,9 +6,15 @@ import requests # APIを使う
 import json # APIで取得するJSONデータを処理する
 import pyaudio # wavファイルを再生する
 import time # タイムラグをつける
+import importlib
+
+importlib.import_module('pyttsx3.drivers.nsss')
 
 # OpenAI APIの設定
-openai.api_key = ""
+f = open("api-key.txt")
+apiKey = f.read().rstrip('\n')
+f.close()
+openai.api_key = apiKey
 model_engine = "gpt-3.5-turbo"
 
 # 音声合成の設定
@@ -57,8 +64,9 @@ def text_to_speech(answer):
         # 音声合成クエリの作成
         res1 = requests.post('http://127.0.0.1:50021/audio_query',params = {'text': answer, 'speaker': 1})
         # 音声合成データの作成
-        res2 = requests.post('http://127.0.0.1:50021/synthesis',params = {'speaker': 1},data=json.dumps(res1.json()))
-        # 
+        res2 = requests.post(
+            'http://127.0.0.1:50021/synthesis',params = {'speaker': 1},data=json.dumps(res1.json())
+        )
         data = res2.content
 
         # PyAudioのインスタンスを生成
