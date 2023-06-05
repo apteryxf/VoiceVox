@@ -54,11 +54,8 @@ print(answer)
 #　返答を音声で出力
 def text_to_speech(answer):
     try:
-        # 文字列の入力
-        text = "私の名前はずんだもんです。東北地方の応援マスコットをしています。得意なことはしゃべることです。"
-
         # 音声合成クエリの作成
-        res1 = requests.post('http://127.0.0.1:50021/audio_query',params = {'text': text, 'speaker': 1})
+        res1 = requests.post('http://127.0.0.1:50021/audio_query',params = {'text': answer, 'speaker': 1})
         # 音声合成データの作成
         res2 = requests.post('http://127.0.0.1:50021/synthesis',params = {'speaker': 1},data=json.dumps(res1.json()))
         # 
