@@ -84,7 +84,3 @@ def text_to_speech(answer):
         p.terminate()
     except subprocess.CalledProcessError as e:
         print("Voicevox実行時にエラーが発生しました:", e)
-
-# テキストを指定して音声出力
-text = "こんにちは、Voicevoxです。"
-text_to_speech(answer)
