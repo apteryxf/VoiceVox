@@ -1,1 +1,1 @@
-chatGPTの返答をVoiceVoxで読み上げる
+ChatGPTの返答をVoiceVoxで読み上げる
