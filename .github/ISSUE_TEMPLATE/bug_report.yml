@@ -4,6 +4,18 @@ body:
   - type: markdown
     attributes:
       value: "## 経緯"
+  - type: textarea
+    id: background
+    attributes:
+      label: "経緯"
+    validations:
+      required: false
   - type: markdown
     attributes:
       value: "## テスト手順と期待する結果"
+  - type: textarea
+    id: check
+    attributes:
+      label: "テスト手順と期待する結果"
+    validations:
+      required: false
